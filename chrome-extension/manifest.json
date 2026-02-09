@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Phishing Finder",
+  "version": "1.0.0",
+  "description": "Detects and blocks phishing websites using AI",
+  "permissions": [
+    "webRequest",
+    "tabs",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-scan.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-warning.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["scanning.html", "blocked.html", "warning.html", "styles.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Site Blocked</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="content blocked">
+      <div class="icon blocked-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h1>⚠️ Phishing Site Blocked</h1>
+      <p class="subtitle">This website has been identified as a potential phishing site.</p>
+      
+      <div class="reason-box" id="reasonBox">
+        <strong>Reason:</strong>
+        <p id="reasonText"></p>
+      </div>
+
+      <div class="url-display" id="urlDisplay"></div>
+
+      <div class="actions">
+        <button id="scanAgainBtn" class="btn btn-primary">Scan Again</button>
+        <button id="goBackBtn" class="btn btn-secondary">Go Back</button>
+        <button id="proceedBtn" class="btn btn-secondary">Proceed Anyway (Not Recommended)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="blocked.js"></script>
+</body>
+</html>
+

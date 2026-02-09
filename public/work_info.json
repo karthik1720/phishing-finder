@@ -1,0 +1,264 @@
+[
+    {
+        "work_id": "550e8400-e29b-41d4-a716-446655440000",
+        "date": "2025-11-24 10:00:00 IST",
+        "project": "way_ai_tutor",
+        "task": "Complete Admin and Lesson Creator roles, specifically the Chapter Level Lesson Planning flow (AI-led generation from textbook photos). Focus: Langflow, Prompting, and Flows.",
+        "assignee": "Gowshik",
+        "planned_delivery": "2025-11-29 18:00:00 IST",
+        "status": "wip",
+        "work_item_history": [
+            {
+                "work_history_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+                "date": "2025-11-24 10:15:00 IST",
+                "assignee_comments": "Feature-wise okay. Accepted deliverables for the week.",
+                "others_comments": "Philip (PO): Focus on AI-led lesson creation. Rebuild chapter creation flow to start with photo upload. Target Wed for Dev, Sat for Staging.",
+                "type": "deliverable",
+                "change_log": "Defined scope for Chapter Level Lesson Planning rebuild."
+            },
+            {
+                "work_history_id": "b2c3d4e5-1111-2222-3333-444455556666",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "Tested Dev/Mobile builds. Created prompt and flow for Chapter Level Lesson Plan (Step 1). Tomorrow: Edit next steps, connect with Karthik on 'I do/We do/You do' flow.",
+                "others_comments": "Majeed (SM): Confirmed demo plan (included in Thenmathi's demo).",
+                "type": "deliverable",
+                "change_log": "Langflow and Prompt work started. UI/Backend tasks split to separate work item for Thenmathi."
+            }
+        ]
+    },
+    {
+        "work_id": "661f9500-f3ac-52e5-b827-557766551111",
+        "date": "2025-11-24 10:00:00 IST",
+        "project": "way_ai_tutor",
+        "task": "Mobile App: Complete existing features and bugs from last week. No new features to be taken up.",
+        "assignee": "Karthik",
+        "planned_delivery": "2025-11-29 18:00:00 IST",
+        "status": "wip",
+        "work_item_history": [
+            {
+                "work_history_id": "b2c3d4e5-f6a7-8901-2345-678901bcdef0",
+                "date": "2025-11-24 10:20:00 IST",
+                "assignee_comments": "Showed demo in build earlier.",
+                "others_comments": "Philip (PO): Don't take up new tasks. Finish existing features, close bugs, move to Staging. Gowshik to manage testing.",
+                "type": "decision",
+                "change_log": "Code freeze on new mobile features for this week."
+            },
+            {
+                "work_history_id": "c3d4e5f6-2222-3333-4444-555566667777",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "No update given directly (Assignee absent).",
+                "others_comments": "Gowshik: Karthik shared latest build. Gowshik pushed a fix and is waiting for a new build from Karthik. Majeed to follow up.",
+                "type": "discussion",
+                "change_log": "Waiting for new build integration."
+            }
+        ]
+    },
+    {
+        "work_id": "772a0611-a4bd-63f6-c938-668877662222",
+        "date": "2025-11-24 10:00:00 IST",
+        "project": "memorium_it",
+        "task": "Implement Family Tree collaboration feature (Request/Accept workflow).",
+        "assignee": "Manikandan",
+        "planned_delivery": "2025-11-29 14:00:00 IST",
+        "status": "wip",
+        "work_item_history": [
+            {
+                "work_history_id": "c3d4e5f6-a7b8-9012-3456-789012cdef01",
+                "date": "2025-11-24 10:40:00 IST",
+                "assignee_comments": "Acknowledged. Will work on Family Tree as per Philip's suggestion to split tasks.",
+                "others_comments": "Philip (PO): Family tree is the 'superstar' feature for the week. Simple notification system. Anand expressed concern about complexity; Philip advised splitting tasks between Santhosh and Manikandan.",
+                "type": "decision",
+                "change_log": "Task assigned specifically to Manikandan to allow parallel processing."
+            },
+            {
+                "work_history_id": "d4e5f6a7-3333-4444-5555-666677778888",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "Completed bug fixes discussed in demo call. Starting Family Tree implementation tomorrow.",
+                "others_comments": "Majeed (SM): Thursday is the deadline for Family Tree to allow for Friday testing.",
+                "type": "deliverable",
+                "change_log": "Bug fixes complete, feature implementation starting."
+            }
+        ]
+    },
+    {
+        "work_id": "883b1722-b5ce-7407-d049-779988773333",
+        "date": "2025-11-24 10:00:00 IST",
+        "project": "memorium_it",
+        "task": "Implement Payment Gateway (Stripe) and Pay & Publish workflow.",
+        "assignee": "Santhosh",
+        "planned_delivery": "2025-11-29 14:00:00 IST",
+        "status": "delayed",
+        "work_item_history": [
+            {
+                "work_history_id": "d4e5f6a7-b8c9-0123-4567-890123def012",
+                "date": "2025-11-24 10:42:00 IST",
+                "assignee_comments": "Will handle Payment Gateway parallel to Manikandan's work on Family Tree.",
+                "others_comments": "Philip (PO): It is a one-time payment flow (199 Euros). Credentials will be provided. Dev environment is sufficient for this week.",
+                "type": "deliverable",
+                "change_log": "Environment set to Dev only (no Staging for this week)."
+            },
+            {
+                "work_history_id": "e5f6a7b8-4444-5555-6666-777788889999",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "No update given directly (Assignee absent).",
+                "others_comments": "Manikandan: Santhosh not available today, not responding. Majeed: Will follow up with Santhosh. Thursday is deadline.",
+                "type": "discussion",
+                "change_log": "Status updated to delayed due to unavailability."
+            }
+        ]
+    },
+    {
+        "work_id": "994c2833-c6df-8518-e15a-880099884444",
+        "date": "2025-11-24 10:00:00 IST",
+        "project": "eztest",
+        "task": "Launch Demo Environment (easytest.houseoffoss.com) and complete Register/Login/Home page.",
+        "assignee": "Kavin",
+        "planned_delivery": "2025-11-25 19:00:00 IST",
+        "status": "wip",
+        "work_item_history": [
+            {
+                "work_history_id": "e5f6a7b8-c9d0-1234-5678-901234ef0123",
+                "date": "2025-11-24 10:50:00 IST",
+                "assignee_comments": "Home page and Register/Login page pending. Will try to complete by Tuesday 7 PM. Need to balance with Aban work.",
+                "others_comments": "Philip (PO): Must go live by Tuesday 7 PM. Clean up GitHub and documentation as well.",
+                "type": "deliverable",
+                "change_log": "Launch deadline set for Tuesday evening."
+            },
+            {
+                "work_history_id": "f6a7b8c9-5555-6666-7777-888899990000",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "Solving minor bugs. Tomorrow working on Login, Register, Home page, and sidebar. Planning launch for tomorrow evening.",
+                "others_comments": "Majeed (SM): Confirmed it is Demo Ready, not Development stage. Mid-week checkpoint is the launch.",
+                "type": "deliverable",
+                "change_log": "Launch confirmation maintained for Tuesday evening."
+            }
+        ]
+    },
+    {
+        "work_id": "005d3944-d7e0-9629-f26b-991100995555",
+        "date": "2025-11-24 10:00:00 IST",
+        "project": "sharepoint_amc",
+        "task": "MIS Dashboard and Power Automate deliverables.",
+        "assignee": "Kavin",
+        "planned_delivery": "2025-11-25 12:00:00 IST",
+        "status": "wip",
+        "work_item_history": [
+            {
+                "work_history_id": "f6a7b8c9-d0e1-2345-6789-012345f01234",
+                "date": "2025-11-24 10:52:00 IST",
+                "assignee_comments": "Acknowledged constraint regarding Aban workload vs EZTest launch.",
+                "others_comments": "Philip (PO): Commitment given for Monday/Tuesday delivery for MIS Dashboard.",
+                "type": "decision",
+                "change_log": "Priority set high for Monday/Tuesday."
+            },
+            {
+                "work_history_id": "07b8c9d0-6666-7777-8888-999900001111",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "Finished changes mentioned on Friday. Informed client (Yas). Waiting for review.",
+                "others_comments": "Majeed (SM): Confirmed pending work mentioned for Monday is completed.",
+                "type": "deliverable",
+                "change_log": "Development task complete, pending client review."
+            }
+        ]
+    },
+    {
+        "work_id": "116e4055-e8f1-a73a-037c-002211006666",
+        "date": "2025-11-24 10:00:00 IST",
+        "project": "house_of_foss",
+        "task": "Improve MOM process and implement manual AI Project Management workflows.",
+        "assignee": "Majeed",
+        "planned_delivery": "2025-11-29 18:00:00 IST",
+        "status": "wip",
+        "work_item_history": [
+            {
+                "work_history_id": "07b8c9d0-e1f2-3456-7890-123456012345",
+                "date": "2025-11-24 10:55:00 IST",
+                "assignee_comments": "Will block 1 hour daily (2:30-3:30) for this. Will convert transcript to structured actionable items.",
+                "others_comments": "Philip (PO): Transcript + structured MOM required. Manual data movement between AI tools to be established this week.",
+                "type": "decision",
+                "change_log": "Daily 1-hour block established for PM system setup."
+            },
+            {
+                "work_history_id": "18c9d0e1-7777-8888-9999-000011112222",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "Had call at 5 PM with Philip. Completed research part. Moving to Mind Map for the product tomorrow.",
+                "others_comments": "Arun: Suggested integrating features like cross-platform posting (Insta/WhatsApp analogy) for department visibility.",
+                "type": "deliverable",
+                "change_log": "Research phase complete."
+            }
+        ]
+    },
+    {
+        "work_id": "227f5166-f902-b84b-148d-113322117777",
+        "date": "2025-11-24 10:00:00 IST",
+        "project": "house_of_foss",
+        "task": "Recurring Payment Gateway & Open Algo upgrade to production (Charging in INR/USD).",
+        "assignee": "Shyaam",
+        "planned_delivery": "2025-11-29 18:00:00 IST",
+        "status": "delayed",
+        "work_item_history": [
+            {
+                "work_history_id": "18c9d0e1-f2a3-4567-8901-234567123456",
+                "date": "2025-11-24 11:15:00 IST",
+                "assignee_comments": "Shyaam unavailable this week (Santhosh noted).",
+                "others_comments": "Philip (PO): Urgent items. Need to handle currency conversion (INR/USD). Since Shyaam is absent, this might be delayed or need replanning.",
+                "type": "discussion",
+                "change_log": "Marked as potentially delayed due to assignee absence."
+            },
+            {
+                "work_history_id": "29d0e1f2-8888-9999-0000-111122223333",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "No update given directly (Assignee absent).",
+                "others_comments": "Philip (PO): Asked for HoF updates. Majeed confirmed Shyaam is unavailable.",
+                "type": "discussion",
+                "change_log": "Delayed status confirmed."
+            }
+        ]
+    },
+    {
+        "work_id": "338g6277-0a13-c95c-259e-224433228888",
+        "date": "2025-11-24 10:00:00 IST",
+        "project": "house_of_foss",
+        "task": "Website Migration from Wix to Nexus (Open Source) and post 3 blogs for Bellsterns.",
+        "assignee": "Arundas",
+        "planned_delivery": "2025-11-29 18:00:00 IST",
+        "status": "wip",
+        "work_item_history": [
+            {
+                "work_history_id": "29d0e1f2-a3b4-5678-9012-345678234567",
+                "date": "2025-11-24 11:10:00 IST",
+                "assignee_comments": "Not present in meeting (Majeed/Philip discussed on behalf).",
+                "others_comments": "Philip (PO): Migrate away from Wix to nexus.bellsterns.com. Post blogs on both platforms for SEO retention.",
+                "type": "deliverable",
+                "change_log": "Migration task prioritized."
+            },
+            {
+                "work_history_id": "30e1f2a3-9999-0000-1111-222233334444",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "Posted Belsterns blog. HoF blog live at 7:30. Pending one thumbnail (ETA 12 PM tomorrow).",
+                "others_comments": "Philip (PO): Requested change in text color for analytics screenshot highlight.",
+                "type": "deliverable",
+                "change_log": "Blog posting in progress."
+            }
+        ]
+    },
+    {
+        "work_id": "449h7388-1b24-d06d-360f-335544339999",
+        "date": "2025-11-24 19:00:00 IST",
+        "project": "way_ai_tutor",
+        "task": "UI and Backend for Chapter Level Lesson Plan and Lesson Wizard (Split from Gowshik's task).",
+        "assignee": "Thenmathi",
+        "planned_delivery": "2025-11-29 18:00:00 IST",
+        "status": "wip",
+        "work_item_history": [
+            {
+                "work_history_id": "41f2a3b4-0000-1111-2222-333344445555",
+                "date": "2025-11-24 19:00:00 IST",
+                "assignee_comments": "Completed bug list fixes and moved to Staging. Starting UI for Chapter Level Lesson Plan. Wed Demo: Concept changes & Chapter Plan Create. Sat Demo: Lesson Wizard.",
+                "others_comments": "Majeed (SM): Reminder that next week Monday/Tuesday is Staging deadline.",
+                "type": "decision",
+                "change_log": "Split from work_id 550e8400-e29b-41d4-a716-446655440000 to track UI/Backend deliverables separately."
+            }
+        ]
+    }
+]

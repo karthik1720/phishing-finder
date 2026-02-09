@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Finder</title>
+  <style>
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #1f2937;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 16px;
+    }
+    .status {
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+    .status.active {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .status.inactive {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    .current-url {
+      font-size: 12px;
+      color: #6b7280;
+      word-break: break-all;
+      margin-bottom: 16px;
+      padding: 8px;
+      background: #f9fafb;
+      border-radius: 4px;
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-bottom: 8px;
+    }
+    .btn:hover {
+      background: #5568d3;
+    }
+    .btn:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+    .btn-secondary {
+      background: #f3f4f6;
+      color: #374151;
+      border: 1px solid #d1d5db;
+    }
+    .btn-secondary:hover {
+      background: #e5e7eb;
+    }
+    .settings-link {
+      text-align: center;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e5e7eb;
+    }
+    .settings-link a {
+      color: #667eea;
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .settings-link a:hover {
+      text-decoration: underline;
+    }
+    .scan-result {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      display: none;
+    }
+    .scan-result.show {
+      display: block;
+    }
+    .scan-result.safe {
+      background: #d1fae5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+    }
+    .scan-result.phishing {
+      background: #fee2e2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+    .scan-result.warning {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #92400e;
+    }
+    .scan-result.loading {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      color: #0369a1;
+    }
+    .result-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .result-details {
+      font-size: 12px;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+    .result-reason {
+      margin-top: 6px;
+      font-style: italic;
+      opacity: 0.9;
+    }
+    .result-confidence {
+      font-size: 11px;
+      margin-top: 4px;
+      opacity: 0.8;
+    }
+    .result-cached {
+      font-size: 11px;
+      margin-top: 4px;
+      opacity: 0.7;
+      font-style: italic;
+    }
+    .auth-section {
+      margin-bottom: 16px;
+      padding: 12px;
+      background: #f9fafb;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+    }
+    .auth-section.logged-in {
+      background: #d1fae5;
+      border-color: #a7f3d0;
+    }
+    .auth-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .auth-tab {
+      flex: 1;
+      padding: 6px;
+      background: white;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: center;
+    }
+    .auth-tab.active {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+    .auth-form {
+      display: none;
+    }
+    .auth-form.active {
+      display: block;
+    }
+    .auth-form input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 12px;
+      box-sizing: border-box;
+    }
+    .auth-error {
+      font-size: 11px;
+      color: #dc2626;
+      margin-bottom: 8px;
+      padding: 6px;
+      background: #fee2e2;
+      border-radius: 4px;
+    }
+    .user-info {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .user-email {
+      font-weight: 500;
+      color: #065f46;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛡️ Phishing Finder</h1>
+  <p class="subtitle">Protecting you from phishing sites</p>
+  
+  <!-- Auth Section -->
+  <div class="auth-section" id="authSection">
+    <!-- Not Logged In View -->
+    <div id="notLoggedInView">
+      <div id="authTabs" class="auth-tabs">
+        <div class="auth-tab active" data-tab="login">Login</div>
+        <div class="auth-tab" data-tab="register">Register</div>
+      </div>
+      
+      <!-- Login Form -->
+      <div id="loginForm" class="auth-form active">
+        <input type="email" id="loginEmail" placeholder="Email" />
+        <input type="password" id="loginPassword" placeholder="Password" />
+        <div id="loginError" class="auth-error hidden"></div>
+        <button id="loginBtn" class="btn">Login</button>
+      </div>
+      
+      <!-- Register Form -->
+      <div id="registerForm" class="auth-form">
+        <input type="email" id="registerEmail" placeholder="Email" />
+        <input type="password" id="registerPassword" placeholder="Password (min 8 chars)" />
+        <div id="registerError" class="auth-error hidden"></div>
+        <button id="registerBtn" class="btn">Register</button>
+      </div>
+    </div>
+    
+    <!-- Logged In View -->
+    <div id="loggedInView" class="hidden">
+      <div class="user-info">
+        Logged in as: <span class="user-email" id="userEmail"></span>
+      </div>
+      <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+    </div>
+  </div>
+  
+  <div class="status" id="statusDiv">Loading...</div>
+  
+  <div class="current-url" id="currentUrl">Loading current page...</div>
+  
+  <div class="scan-result" id="scanResult">
+    <div class="result-header" id="resultHeader"></div>
+    <div class="result-details" id="resultDetails"></div>
+  </div>
+  
+  <button id="scanCurrentBtn" class="btn">Scan Current Page</button>
+  <button id="openSettingsBtn" class="btn btn-secondary">Open Settings</button>
+
+  <script src="auth.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
+

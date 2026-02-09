@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Warning</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="content warning">
+      <div class="icon warning-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      </div>
+      <h1>⚠️ Website Warning</h1>
+      <p class="subtitle">This website has been flagged for potential risks.</p>
+      
+      <div class="warning-types" id="warningTypes"></div>
+      
+      <div class="reason-box warning-box" id="reasonBox">
+        <strong>Warning Details:</strong>
+        <p id="reasonText"></p>
+      </div>
+
+      <div class="url-display" id="urlDisplay"></div>
+
+      <div class="actions">
+        <button id="scanAgainBtn" class="btn btn-primary">Scan Again</button>
+        <button id="proceedBtn" class="btn btn-warning" style="display: none;">Proceed Anyway</button>
+        <button id="goBackBtn" class="btn btn-secondary">Go Back</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="warning.js"></script>
+</body>
+</html>
+
+

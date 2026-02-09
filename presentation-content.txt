@@ -1,0 +1,944 @@
+================================================================================
+                    PHISHING FINDER - FINAL YEAR PROJECT
+                    AI-Powered Phishing Detection System
+================================================================================
+
+SLIDE 1: TITLE SLIDE
+--------------------------------------------------------------------------------
+Title: Phishing Finder - AI-Powered Phishing Detection System
+
+Subtitle: Final Year Project Presentation
+
+[Your Name]
+[Your Roll Number]
+[Your Institution]
+[Date]
+
+Screenshot: <title-slide>
+
+
+SLIDE 2: PROBLEM STATEMENT
+--------------------------------------------------------------------------------
+Title: Problem Statement
+
+• Phishing attacks are increasing exponentially worldwide
+• Traditional security measures are insufficient
+• Users often fall victim to sophisticated phishing websites
+• Manual detection is time-consuming and error-prone
+• Need for real-time, automated phishing detection
+• Current solutions lack AI-powered analysis capabilities
+
+Statistics:
+- Over 3.4 billion phishing emails sent daily
+- 90% of cyber attacks start with phishing
+- Average cost of phishing attack: $4.65 million
+
+Screenshot: <problem-statement>
+
+
+SLIDE 3: SOLUTION OVERVIEW
+--------------------------------------------------------------------------------
+Title: Solution Overview
+
+Phishing Finder is an intelligent browser extension that:
+• Automatically scans every website you visit
+• Uses AI (Google Gemini) to detect phishing sites
+• Blocks malicious websites in real-time
+• Warns users about risky websites
+• Maintains a shared database for faster detection
+• Provides admin dashboard for monitoring
+
+Key Benefits:
+✓ Real-time protection
+✓ AI-powered analysis
+✓ Zero user intervention required
+✓ Shared knowledge across all users
+✓ Comprehensive audit logging
+
+Screenshot: <solution-overview>
+
+
+SLIDE 4: SYSTEM ARCHITECTURE
+--------------------------------------------------------------------------------
+Title: System Architecture
+
+Three-Tier Architecture:
+
+1. FRONTEND (Chrome Extension)
+   - Browser extension for real-time protection
+   - User interface for authentication
+   - Warning banners and blocking pages
+
+2. BACKEND (Next.js API)
+   - RESTful API endpoints
+   - AI-powered URL analysis
+   - Database caching layer
+   - Authentication service
+
+3. DATABASE (PostgreSQL)
+   - URL check results cache
+   - User management
+   - Audit records
+
+4. AI SERVICE (Google Gemini)
+   - LangChain framework integration
+   - Website content analysis
+   - Phishing detection logic
+
+Flow: User → Extension → API → Database → AI Service
+
+Screenshot: <architecture-diagram>
+
+
+SLIDE 5: CHROME EXTENSION - CORE FEATURES
+--------------------------------------------------------------------------------
+Title: Chrome Extension Features
+
+1. REAL-TIME URL SCANNING
+   • Automatically checks every URL you visit
+   • Intercepts navigation requests
+   • Checks against cached database first
+   • Calls AI service for new URLs
+
+2. AUTOMATIC BLOCKING
+   • Blocks confirmed phishing sites
+   • Shows detailed blocking page
+   • Displays reason for blocking
+   • Option to proceed (not recommended)
+
+3. WARNING SYSTEM
+   • Warns about risky websites (not phishing)
+   • Categories: Piracy, Scamming, Risky Links, etc.
+   • Warning banner overlay on page
+   • User can dismiss and continue
+
+Screenshot: <extension-features>
+
+
+SLIDE 6: CHROME EXTENSION - USER INTERFACE
+--------------------------------------------------------------------------------
+Title: Extension User Interface
+
+POPUP INTERFACE:
+• Login/Register functionality
+• Current page status display
+• Manual scan button
+• Settings access
+• Real-time scan results
+
+SCANNING PAGE:
+• Shown while checking new URLs
+• Loading animation
+• URL being scanned displayed
+
+BLOCKED PAGE:
+• Red warning design
+• Phishing reason explanation
+• Options: Scan Again, Go Back, Proceed Anyway
+
+WARNING BANNER:
+• Yellow warning overlay
+• Warning type and severity
+• Dismissible banner
+• Continues to show on page
+
+Screenshot: <extension-popup>
+Screenshot: <scanning-page>
+Screenshot: <blocked-page>
+Screenshot: <warning-banner>
+
+
+SLIDE 7: BACKEND API - URL CHECKING
+--------------------------------------------------------------------------------
+Title: Backend API - URL Checking Service
+
+ENDPOINT: POST /api/check-url
+
+Features:
+• Base domain extraction (normalizes URLs)
+• Database cache lookup (fast response)
+• AI-powered analysis for new URLs
+• Result caching for future requests
+• Confidence scoring
+• Detailed reasoning provided
+
+Process Flow:
+1. Extract base domain from URL
+2. Check database cache
+3. If cached → return immediately
+4. If new → call AI service
+5. Store result in database
+6. Return analysis result
+
+Performance:
+• Cached URLs: < 50ms response time
+• New URLs: 2-5 seconds (AI analysis)
+
+Screenshot: <api-endpoint-demo>
+
+
+SLIDE 8: BACKEND API - AUTHENTICATION
+--------------------------------------------------------------------------------
+Title: Backend API - Authentication System
+
+FEATURES:
+• User registration with email/password
+• Secure login with JWT tokens
+• Password hashing using bcrypt
+• Role-based access (USER, ADMIN)
+• Token validation middleware
+• Session management
+
+ENDPOINTS:
+• POST /api/auth/register - User registration
+• POST /api/auth/login - User login
+• Protected routes require Bearer token
+
+Security:
+✓ Passwords hashed with bcrypt
+✓ JWT tokens for authentication
+✓ Token expiration handling
+✓ Secure password requirements
+
+Screenshot: <authentication-flow>
+
+
+SLIDE 9: ADMIN PANEL - OVERVIEW
+--------------------------------------------------------------------------------
+Title: Admin Panel Overview
+
+PURPOSE:
+• Monitor all URL checks
+• View user activity audit logs
+• Track phishing detection statistics
+• Manage system data
+
+ACCESS:
+• Admin login required
+• Separate authentication
+• Protected admin routes
+
+FEATURES:
+• URL Checks Management Table
+• Audit Records Table
+• Advanced filtering and sorting
+• Pagination support
+• Export capabilities
+
+Screenshot: <admin-dashboard>
+
+
+SLIDE 10: ADMIN PANEL - URL CHECKS TABLE
+--------------------------------------------------------------------------------
+Title: Admin Panel - URL Checks Management
+
+FEATURES:
+• View all checked URLs
+• Filter by phishing status
+• Filter by warning status
+• Search URLs
+• Sort by any column
+• Pagination (25/50/100 per page)
+
+DISPLAYED INFORMATION:
+• URL
+• Phishing Status (Yes/No)
+• Warning Status (Yes/No)
+• Warning Type
+• Confidence Score
+• Checked Timestamp
+
+ACTIONS:
+• View detailed results
+• Filter and search
+• Export data
+
+Screenshot: <url-checks-table>
+
+
+SLIDE 11: ADMIN PANEL - AUDIT RECORDS
+--------------------------------------------------------------------------------
+Title: Admin Panel - Audit Records
+
+PURPOSE:
+• Track all user interactions
+• Monitor blocked/warned sites
+• User activity logging
+• Security auditing
+
+FEATURES:
+• User email display
+• URL visited
+• Action taken (BLOCKED/WARNING_SHOWN/ALLOWED)
+• Phishing status
+• Warning details
+• IP address tracking
+• User agent information
+• Visit timestamp
+
+FILTERING OPTIONS:
+• Filter by action type
+• Filter by phishing status
+• Search by user email
+• Date range filtering
+• Sort by visit time
+
+Screenshot: <audit-records-table>
+
+
+SLIDE 12: AI/ML FEATURES - LANGCHAIN INTEGRATION
+--------------------------------------------------------------------------------
+Title: AI/ML Features - LangChain Framework
+
+FRAMEWORK: LangChain with Google Gemini
+
+CAPABILITIES:
+• Intelligent URL analysis
+• Tool calling for deep inspection
+• Multi-step reasoning
+• Context-aware decisions
+
+PROCESS:
+1. Initial URL analysis
+2. If uncertain → fetch website content
+3. Analyze HTML, JavaScript, forms
+4. Detect suspicious patterns
+5. Make final decision
+
+TOOLS AVAILABLE:
+• fetchWebsiteContent - Analyzes actual page content
+• Extracts scripts, forms, links
+• Identifies obfuscated code
+• Detects suspicious patterns
+
+Screenshot: <ai-analysis-flow>
+
+
+SLIDE 13: AI/ML FEATURES - PHISHING DETECTION
+--------------------------------------------------------------------------------
+Title: AI Detection Capabilities
+
+PHISHING DETECTION FACTORS:
+• Domain name analysis (typosquatting)
+• URL structure anomalies
+• Known phishing indicators
+• SSL certificate validity
+• Domain age and reputation
+
+WARNING CATEGORIES:
+• PIRACY - Pirated content sites
+• SCAMMING - Fraudulent services
+• RISKY_LINKS - Suspicious redirects
+• SCAM_PRODUCTS - Fake products
+• RISKY_FILES - Malicious downloads
+
+AI ANALYSIS:
+• Confidence scoring (0.0 - 1.0)
+• Detailed reasoning provided
+• Multi-factor analysis
+• Context-aware decisions
+
+Screenshot: <ai-detection-example>
+
+
+SLIDE 14: AI/ML FEATURES - WEBSITE CONTENT ANALYSIS
+--------------------------------------------------------------------------------
+Title: Website Content Analysis Tool
+
+TOOL: fetchWebsiteContent
+
+ANALYZES:
+• HTML structure
+• JavaScript code (inline & external)
+• Form elements and actions
+• Links (internal & external)
+• Meta tags
+• Suspicious patterns
+
+DETECTS:
+• Obfuscated JavaScript
+• Hidden form elements
+• Suspicious redirects
+• Suspicious script sources
+• Typosquatting domains
+• Malicious code patterns
+
+TOKEN MANAGEMENT:
+• Smart content trimming
+• 10k token limit
+• Preserves important data
+• Efficient processing
+
+Screenshot: <content-analysis-example>
+
+
+SLIDE 15: TECHNOLOGY STACK - FRONTEND
+--------------------------------------------------------------------------------
+Title: Technology Stack - Frontend
+
+CHROME EXTENSION:
+• JavaScript (ES6+)
+• Chrome Extension Manifest V3
+• Chrome APIs:
+  - webRequest API
+  - tabs API
+  - storage API
+• HTML5 & CSS3
+• Service Worker (background.js)
+
+FEATURES:
+• Real-time request interception
+• Content scripts injection
+• Popup interface
+• Options page
+• Local storage management
+
+Screenshot: <tech-stack-frontend>
+
+
+SLIDE 16: TECHNOLOGY STACK - BACKEND
+--------------------------------------------------------------------------------
+Title: Technology Stack - Backend
+
+FRAMEWORK: Next.js 16
+• React 19
+• TypeScript
+• Server-side rendering
+• API routes
+
+AI/ML:
+• LangChain framework
+• Google Gemini (gemini-2.0-flash-exp)
+• Tool calling capabilities
+• Structured output parsing
+
+DATABASE:
+• PostgreSQL
+• Prisma ORM
+• Database migrations
+• Type-safe queries
+
+AUTHENTICATION:
+• JWT (JSON Web Tokens)
+• bcrypt for password hashing
+• Role-based access control
+
+Screenshot: <tech-stack-backend>
+
+
+SLIDE 17: TECHNOLOGY STACK - TOOLS & LIBRARIES
+--------------------------------------------------------------------------------
+Title: Additional Tools & Libraries
+
+WEB SCRAPING:
+• Cheerio - HTML parsing
+• jsdom - DOM manipulation
+
+HTTP CLIENT:
+• Fetch API
+• AbortController for timeouts
+
+UI COMPONENTS:
+• Radix UI primitives
+• Tailwind CSS
+• Custom component library
+
+UTILITIES:
+• Zod - Schema validation
+• date-fns - Date formatting
+• UUID - Unique identifiers
+
+DEVELOPMENT:
+• TypeScript
+• ESLint
+• Prettier
+• Docker support
+
+Screenshot: <tech-stack-tools>
+
+
+SLIDE 18: DATABASE SCHEMA
+--------------------------------------------------------------------------------
+Title: Database Schema Design
+
+THREE MAIN TABLES:
+
+1. USERS TABLE
+   • id (UUID, Primary Key)
+   • email (Unique)
+   • passwordHash
+   • role (USER/ADMIN)
+   • timestamps
+
+2. URL_CHECKS TABLE
+   • id (UUID, Primary Key)
+   • url (Unique, Indexed)
+   • isPhishing (Boolean)
+   • hasWarning (Boolean)
+   • warningType, warningSeverity, warningReason
+   • confidence (Float)
+   • reason (Text)
+   • userId (Foreign Key)
+   • timestamps
+
+3. AUDIT_RECORDS TABLE
+   • id (UUID, Primary Key)
+   • userId (Foreign Key → Users)
+   • url
+   • isPhishing, hasWarning
+   • warningType, warningSeverity, warningReason
+   • action (BLOCKED/WARNING_SHOWN/ALLOWED)
+   • ipAddress, userAgent
+   • visitedAt, timestamps
+
+Screenshot: <database-schema-diagram>
+
+
+SLIDE 19: SECURITY FEATURES
+--------------------------------------------------------------------------------
+Title: Security Features
+
+AUTHENTICATION & AUTHORIZATION:
+• JWT token-based authentication
+• Password hashing with bcrypt
+• Role-based access control (USER/ADMIN)
+• Token expiration handling
+• Secure password requirements
+
+DATA PROTECTION:
+• Input validation and sanitization
+• SQL injection prevention (Prisma ORM)
+• XSS protection
+• CORS configuration
+
+FAIL-SAFE MECHANISMS:
+• Fail-open policy (allow if check fails)
+• Error handling and logging
+• Rate limiting considerations
+• Timeout handling
+
+PRIVACY:
+• IP address logging (admin only)
+• User agent tracking
+• Audit trail maintenance
+• Secure token storage
+
+Screenshot: <security-features>
+
+
+SLIDE 20: USER FLOW - REGISTRATION & LOGIN
+--------------------------------------------------------------------------------
+Title: User Flow - Registration & Login
+
+STEP 1: EXTENSION INSTALLATION
+• User installs Chrome extension
+• Extension loads popup interface
+
+STEP 2: REGISTRATION
+• User clicks Register tab
+• Enters email and password
+• Submits registration form
+• Account created in database
+• Auto-login after registration
+
+STEP 3: LOGIN
+• User enters credentials
+• Backend validates password
+• JWT token generated
+• Token stored in extension storage
+• User authenticated
+
+STEP 4: READY TO USE
+• Extension now active
+• All URLs will be checked
+• User can browse safely
+
+Screenshot: <registration-flow>
+Screenshot: <login-flow>
+
+
+SLIDE 21: USER FLOW - URL SCANNING
+--------------------------------------------------------------------------------
+Title: User Flow - URL Scanning Process
+
+STEP 1: USER NAVIGATES TO URL
+• User types URL or clicks link
+• Extension intercepts request
+
+STEP 2: CHECK CACHE
+• Extension extracts base domain
+• Checks local cache first
+• If cached → instant result
+
+STEP 3: API CALL (if not cached)
+• Extension calls backend API
+• Shows scanning page
+• Backend checks database cache
+
+STEP 4: AI ANALYSIS (if needed)
+• Backend calls LangChain service
+• AI analyzes URL
+• May fetch website content
+• Returns phishing/warning result
+
+STEP 5: RESULT HANDLING
+• If phishing → Block page shown
+• If warning → Warning banner displayed
+• If safe → Normal navigation
+• Result cached for future
+
+Screenshot: <url-scanning-flow>
+
+
+SLIDE 22: USER FLOW - BLOCKING & WARNINGS
+--------------------------------------------------------------------------------
+Title: User Flow - Blocking & Warnings
+
+PHISHING DETECTED:
+• Navigation blocked
+• Blocked page displayed
+• Shows reason for blocking
+• Options:
+  - Scan Again
+  - Go Back
+  - Proceed Anyway (not recommended)
+
+WARNING DETECTED:
+• Navigation allowed
+• Warning banner appears on page
+• Shows warning type and severity
+• User can dismiss banner
+• Page continues to load
+
+SAFE SITE:
+• Normal navigation
+• No interruption
+• Result cached
+• Audit record created (if harmful)
+
+Screenshot: <blocking-flow>
+Screenshot: <warning-flow>
+
+
+SLIDE 23: ADMIN FLOW - DASHBOARD ACCESS
+--------------------------------------------------------------------------------
+Title: Admin Flow - Dashboard Access
+
+STEP 1: ADMIN LOGIN
+• Admin navigates to /admin/login
+• Enters admin credentials
+• JWT token generated
+• Token stored in localStorage
+
+STEP 2: DASHBOARD ACCESS
+• Admin redirected to /admin
+• Two tabs available:
+  - URL Checks
+  - Audit Records
+
+STEP 3: URL CHECKS TAB
+• View all checked URLs
+• Filter by status
+• Search functionality
+• Sort and paginate
+
+STEP 4: AUDIT RECORDS TAB
+• View user activity
+• Filter by action type
+• Search by user email
+• Date range filtering
+
+Screenshot: <admin-login>
+Screenshot: <admin-dashboard-tabs>
+
+
+SLIDE 24: KEY FEATURES SUMMARY
+--------------------------------------------------------------------------------
+Title: Key Features Summary
+
+CHROME EXTENSION:
+✓ Real-time URL scanning
+✓ Automatic phishing blocking
+✓ Warning system for risky sites
+✓ User authentication
+✓ Popup interface
+✓ Scanning/Blocking pages
+
+BACKEND API:
+✓ RESTful API endpoints
+✓ AI-powered URL analysis
+✓ Database caching
+✓ User authentication
+✓ Admin endpoints
+✓ Audit logging
+
+ADMIN PANEL:
+✓ URL checks management
+✓ Audit records viewing
+✓ Advanced filtering
+✓ Search functionality
+✓ Pagination support
+
+AI/ML:
+✓ LangChain integration
+✓ Google Gemini LLM
+✓ Tool calling capability
+✓ Website content analysis
+✓ Multi-factor detection
+
+Screenshot: <features-summary>
+
+
+SLIDE 25: PERFORMANCE OPTIMIZATIONS
+--------------------------------------------------------------------------------
+Title: Performance Optimizations
+
+CACHING STRATEGY:
+• Database cache for URL checks
+• In-memory cache in extension
+• Base domain normalization
+• Shared cache across users
+
+RESPONSE TIMES:
+• Cached URLs: < 50ms
+• New URLs: 2-5 seconds (AI analysis)
+• Tool calls: Additional 3-5 seconds
+
+OPTIMIZATIONS:
+• Parallel processing where possible
+• Token limit management (10k tokens)
+• Content trimming for large pages
+• Efficient database queries
+• Indexed database columns
+
+SCALABILITY:
+• Stateless API design
+• Database connection pooling
+• Horizontal scaling ready
+• Efficient caching layer
+
+Screenshot: <performance-metrics>
+
+
+SLIDE 26: CHALLENGES FACED
+--------------------------------------------------------------------------------
+Title: Challenges & Solutions
+
+CHALLENGE 1: Real-time Detection
+• Problem: Need instant blocking
+• Solution: Multi-layer caching + background checks
+
+CHALLENGE 2: AI Accuracy
+• Problem: False positives/negatives
+• Solution: Confidence scoring + tool calling
+
+CHALLENGE 3: Token Limits
+• Problem: Large website content
+• Solution: Smart content trimming algorithm
+
+CHALLENGE 4: Extension Permissions
+• Problem: Chrome security restrictions
+• Solution: Proper manifest configuration
+
+CHALLENGE 5: Database Performance
+• Problem: Large number of URLs
+• Solution: Indexing + pagination
+
+Screenshot: <challenges-solutions>
+
+
+SLIDE 27: TESTING & VALIDATION
+--------------------------------------------------------------------------------
+Title: Testing & Validation
+
+TESTING APPROACH:
+• Manual testing of all features
+• Extension testing in Chrome
+• API endpoint testing
+• Database query validation
+• AI response validation
+
+TEST CASES:
+✓ Phishing URL detection
+✓ Safe URL approval
+✓ Warning categorization
+✓ Authentication flow
+✓ Admin panel functionality
+✓ Cache hit/miss scenarios
+✓ Error handling
+
+VALIDATION:
+• Tested with known phishing sites
+• Tested with legitimate sites
+• Verified warning categories
+• Checked audit logging
+• Validated security measures
+
+Screenshot: <testing-scenarios>
+
+
+SLIDE 28: FUTURE ENHANCEMENTS
+--------------------------------------------------------------------------------
+Title: Future Enhancements
+
+SHORT-TERM:
+• Machine learning model training
+• More warning categories
+• Browser extension for Firefox
+• Mobile app version
+• Email phishing detection
+
+MEDIUM-TERM:
+• Real-time threat intelligence feeds
+• Community reporting system
+• Advanced analytics dashboard
+• API rate limiting
+• Webhook notifications
+
+LONG-TERM:
+• Multi-language support
+• Enterprise version
+• Custom rule configuration
+• Integration with security tools
+• Automated threat hunting
+
+Screenshot: <future-roadmap>
+
+
+SLIDE 29: IMPACT & APPLICATIONS
+--------------------------------------------------------------------------------
+Title: Impact & Applications
+
+TARGET USERS:
+• Individual internet users
+• Small businesses
+• Educational institutions
+• Organizations needing protection
+
+BENEFITS:
+• Prevents phishing attacks
+• Protects sensitive information
+• Reduces financial losses
+• Increases user awareness
+• Provides audit trail
+
+APPLICATIONS:
+• Personal browsing protection
+• Corporate security
+• Educational tool
+• Research platform
+• Security awareness training
+
+STATISTICS:
+• Can protect millions of users
+• Reduces phishing success rate
+• Provides valuable threat data
+• Contributes to cybersecurity
+
+Screenshot: <impact-applications>
+
+
+SLIDE 30: CONCLUSION
+--------------------------------------------------------------------------------
+Title: Conclusion
+
+SUMMARY:
+• Successfully developed AI-powered phishing detection system
+• Real-time protection through Chrome extension
+• Comprehensive admin dashboard
+• Robust backend API
+• Advanced AI/ML capabilities
+
+ACHIEVEMENTS:
+✓ Real-time URL scanning
+✓ AI-powered detection
+✓ User-friendly interface
+✓ Admin monitoring system
+✓ Secure authentication
+✓ Comprehensive audit logging
+
+TECHNICAL HIGHLIGHTS:
+• LangChain + Google Gemini integration
+• Tool calling for deep analysis
+• Efficient caching mechanism
+• Scalable architecture
+• Security best practices
+
+FINAL WORDS:
+This project demonstrates the power of AI in cybersecurity,
+providing real-time protection against phishing attacks while
+maintaining user experience and system performance.
+
+Screenshot: <conclusion-slide>
+
+
+SLIDE 31: DEMONSTRATION
+--------------------------------------------------------------------------------
+Title: Live Demonstration
+
+DEMO SCENARIOS:
+
+1. EXTENSION INSTALLATION & SETUP
+   • Install Chrome extension
+   • Register new account
+   • Login process
+
+2. SAFE SITE NAVIGATION
+   • Visit legitimate website
+   • Show normal navigation
+   • Display cached result
+
+3. PHISHING DETECTION
+   • Visit known phishing site
+   • Show scanning process
+   • Display blocking page
+   • Explain detection reason
+
+4. WARNING SYSTEM
+   • Visit risky website
+   • Show warning banner
+   • Demonstrate dismissal
+
+5. ADMIN DASHBOARD
+   • Login as admin
+   • View URL checks table
+   • View audit records
+   • Demonstrate filtering
+
+Screenshot: <demo-scenario-1>
+Screenshot: <demo-scenario-2>
+Screenshot: <demo-scenario-3>
+Screenshot: <demo-scenario-4>
+Screenshot: <demo-scenario-5>
+
+
+SLIDE 32: QUESTIONS & ANSWERS
+--------------------------------------------------------------------------------
+Title: Questions & Answers
+
+Thank you for your attention!
+
+Ready for questions and discussion.
+
+Contact Information:
+[Your Email]
+[Your GitHub/Portfolio]
+
+Project Repository:
+[GitHub Link]
+
+Screenshot: <qa-slide>
+
+
+================================================================================
+                            END OF PRESENTATION
+================================================================================
+
+NOTES FOR PRESENTATION:
+- Each slide should have appropriate visuals
+- Use screenshots where indicated with <screen name>
+- Keep explanations concise during presentation
+- Be prepared to demonstrate live
+- Have backup slides for technical details
+- Practice timing (aim for 15-20 minutes)
+
