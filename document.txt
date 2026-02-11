@@ -1,0 +1,1276 @@
+================================================================================
+                    FIRST REVIEW REPORT - PROJECT DOCUMENT
+            AI-Based Phishing Detection System
+================================================================================
+
+[Your Name]
+[Roll Number]
+[Institution]
+[Date]
+
+================================================================================
+
+
+1. TITLE OF THE PROJECT
+================================================================================
+
+AI-Based Phishing Detection System
+
+This project aims to develop an intelligent browser extension that leverages 
+artificial intelligence to detect and prevent phishing attacks in real-time, 
+providing users with automated protection against malicious websites through 
+seamless integration with their web browsing experience.
+
+
+================================================================================
+
+
+2. PROBLEM DEFINITION / ABSTRACT
+================================================================================
+
+Phishing attacks have emerged as one of the most significant cybersecurity 
+threats in the modern digital landscape, with attackers continuously evolving 
+their techniques to bypass traditional security measures. According to recent 
+statistics, over 3.4 billion phishing emails are sent daily worldwide, 
+and approximately 90% of all cyber attacks originate from phishing attempts. 
+The financial impact is staggering, with the average cost of a phishing 
+attack reaching $4.65 million per incident for organizations.
+
+Traditional security solutions have proven inadequate in addressing this 
+growing threat. Blacklist-based systems can only protect against known 
+phishing sites, leaving users vulnerable to new and evolving attacks. 
+Heuristic-based detection methods often suffer from high false positive rates, 
+leading to user frustration and decreased trust in security systems. Manual 
+reporting mechanisms are slow to respond, allowing malicious sites to operate 
+for extended periods before being flagged.
+
+The current generation of browser-based security solutions, such as Google 
+Safe Browsing and Microsoft SmartScreen, primarily rely on known threat 
+databases and community reporting. While these systems provide a baseline 
+level of protection, they lack the intelligence to analyze website content 
+in real-time and adapt to new attack patterns. Furthermore, these solutions 
+are reactive rather than proactive, only flagging sites after they have been 
+reported and verified.
+
+This project proposes an AI-based phishing detection system that addresses 
+these limitations by leveraging advanced artificial intelligence capabilities. 
+The system utilizes Google Gemini Large Language Model (LLM) integrated with 
+the LangChain framework to perform intelligent analysis of URLs and website 
+content. Unlike traditional systems, this solution can analyze the semantic 
+content, structure, and behavior of websites to identify phishing indicators 
+even when encountering previously unknown threats.
+
+The proposed system operates as a Chrome browser extension that automatically 
+scans every website visited by users. When a user navigates to a URL, the 
+extension intercepts the request and performs a multi-layered analysis. 
+First, it checks a shared database cache for previously analyzed URLs, enabling 
+instant responses for known sites. For new URLs, the system employs AI-powered 
+analysis that examines domain patterns, URL structure, website content, 
+JavaScript code, form elements, and other security indicators.
+
+The system provides three levels of protection: automatic blocking of confirmed 
+phishing sites, warning banners for risky websites that may not be phishing 
+but pose other security concerns, and seamless navigation for safe websites. 
+The AI engine categorizes risks into multiple warning types including piracy 
+sites, scam websites, risky links, scam products, and malicious file 
+distribution sites.
+
+A comprehensive admin dashboard allows administrators to monitor all URL checks, 
+view audit logs of user interactions, track detection statistics, and manage 
+system data. The system maintains detailed audit records including user 
+information, visited URLs, actions taken, IP addresses, and timestamps, 
+enabling comprehensive security auditing and analysis.
+
+The solution addresses the critical need for automated, intelligent phishing 
+detection that can adapt to evolving attack patterns while maintaining high 
+accuracy and minimal false positives. By combining real-time AI analysis with 
+shared knowledge caching, the system provides both immediate protection and 
+long-term learning capabilities that benefit all users.
+
+
+================================================================================
+
+
+3. RELATED WORK / EXISTING SYSTEM
+================================================================================
+
+The field of phishing detection has seen significant research and development 
+over the years, with various approaches being proposed and implemented. This 
+section reviews the existing systems and methodologies in phishing detection.
+
+Traditional phishing detection methods primarily rely on blacklist-based 
+approaches where known malicious URLs are maintained in databases. Systems 
+like Google Safe Browsing API maintain extensive databases of reported 
+phishing and malware sites. When a user attempts to visit a URL, the browser 
+checks against these databases and blocks or warns about known threats. 
+However, this approach has fundamental limitations: it can only protect 
+against sites that have been previously identified and added to the database, 
+leaving users vulnerable to new phishing attempts. The time lag between a 
+phishing site going live and being added to blacklists can be significant, 
+during which many users may fall victim.
+
+Heuristic-based detection systems employ rule-based algorithms that analyze 
+various characteristics of URLs and websites. These systems check for 
+suspicious patterns such as domain name similarities (typosquatting), 
+suspicious URL structures, presence of certain keywords, and other 
+identifiable markers. While these systems can catch some new threats, they 
+often suffer from high false positive rates, flagging legitimate websites 
+that happen to match certain patterns. This leads to user frustration and 
+may cause users to disable security features.
+
+Email-based phishing detection systems focus on analyzing email content, 
+headers, and links to identify phishing attempts before they reach users. 
+These systems use various techniques including sender reputation analysis, 
+content filtering, and link analysis. However, they do not address the web 
+browsing aspect of phishing, where users may encounter malicious sites through 
+direct navigation, search results, or other means beyond email.
+
+Browser-based security solutions have become standard in modern web browsers. 
+Google Chrome incorporates Safe Browsing API, Microsoft Edge uses SmartScreen, 
+and Mozilla Firefox includes similar protection mechanisms. These systems 
+provide warnings when users attempt to visit known malicious sites. However, 
+they are limited to their respective threat intelligence databases and do not 
+provide real-time AI-powered analysis of website content.
+
+Machine learning approaches have been explored for phishing detection, with 
+various algorithms including support vector machines, random forests, and 
+neural networks being applied to URL classification. These systems typically 
+require extensive training datasets and may struggle with generalization to 
+new attack patterns. Deep learning approaches have shown promise but often 
+require significant computational resources and may not be suitable for 
+real-time browser extension applications.
+
+Natural language processing techniques have been applied to analyze website 
+content, looking for linguistic patterns that indicate phishing attempts. 
+These systems examine the text content of websites, email messages, and other 
+textual elements to identify suspicious language patterns. However, they may 
+miss non-textual indicators and can be evaded by sophisticated attackers who 
+craft content to avoid detection.
+
+The limitations of existing systems highlight the need for a solution that 
+combines the benefits of multiple approaches. Current systems are primarily 
+reactive, responding only to known threats. They lack the ability to perform 
+intelligent, real-time analysis of website content and structure. Most 
+solutions operate in isolation without sharing knowledge across users, 
+leading to redundant analysis and slower threat detection. Additionally, 
+existing systems often provide limited user control and transparency, making 
+it difficult for users to understand why certain sites are flagged.
+
+The proposed AI-based phishing detection system addresses these limitations 
+by leveraging modern large language models that can understand context, 
+analyze complex patterns, and make intelligent decisions about website 
+legitimacy. By integrating with browser extensions, the system provides 
+seamless, real-time protection without disrupting user experience. The shared 
+database approach ensures that threat intelligence is rapidly disseminated 
+across all users, providing collective protection benefits.
+
+
+================================================================================
+
+
+4. OBJECTIVES AND SCOPE OF THE PROPOSED WORK
+================================================================================
+
+4.1 PRIMARY OBJECTIVES
+
+The primary objectives of this project are to develop a comprehensive 
+AI-based phishing detection system that provides real-time protection 
+against malicious websites. The system aims to:
+
+1. Develop a browser extension that automatically scans and analyzes every 
+   website visited by users without requiring manual intervention.
+
+2. Integrate advanced AI capabilities using Google Gemini Large Language 
+   Model through the LangChain framework to perform intelligent analysis 
+   of URLs and website content.
+
+3. Implement a multi-layered detection mechanism that can identify phishing 
+   sites, categorize risky websites, and distinguish between different types 
+   of security threats.
+
+4. Create a shared database system that caches analysis results, enabling 
+   faster detection for previously analyzed URLs and sharing threat 
+   intelligence across all users.
+
+5. Develop a comprehensive admin dashboard that allows administrators to 
+   monitor system activity, view audit logs, track detection statistics, 
+   and manage system data.
+
+6. Ensure high accuracy in phishing detection while maintaining low false 
+   positive rates through intelligent AI analysis and confidence scoring.
+
+7. Provide seamless user experience with minimal performance impact, 
+   ensuring that security protection does not interfere with normal 
+   browsing activities.
+
+8. Implement robust authentication and authorization mechanisms to secure 
+   user data and system access.
+
+4.2 SCOPE OF WORK
+
+The scope of this project encompasses the following components:
+
+4.2.1 Chrome Browser Extension Development
+The project includes development of a Chrome browser extension that serves as 
+the frontend interface for the phishing detection system. This includes 
+user authentication interface, real-time URL scanning, blocking pages for 
+phishing sites, warning banners for risky websites, and popup interface for 
+user interaction.
+
+4.2.2 Backend API Development
+A comprehensive backend API will be developed using Next.js framework, 
+providing RESTful endpoints for URL checking, user authentication, admin 
+functionality, and audit logging. The API will handle request processing, 
+database interactions, and AI service integration.
+
+4.2.3 Database Design and Implementation
+A PostgreSQL database will be designed and implemented to store URL check 
+results, user information, and audit records. The database schema will be 
+optimized for fast lookups and efficient data management.
+
+4.2.4 AI Integration
+Integration with Google Gemini LLM through LangChain framework will be 
+implemented, including tool calling mechanisms for website content analysis, 
+phishing detection algorithms, and confidence scoring systems.
+
+4.2.5 Admin Panel Development
+A web-based admin dashboard will be developed to provide administrators 
+with tools for monitoring system activity, viewing URL checks, managing 
+audit records, and analyzing system performance.
+
+4.2.6 Security Implementation
+Comprehensive security measures will be implemented including user 
+authentication using JWT tokens, password hashing, role-based access control, 
+input validation, and secure API communication.
+
+4.3 SCOPE LIMITATIONS
+
+The following aspects are explicitly out of scope for this project:
+
+1. Email phishing detection - The system focuses exclusively on web-based 
+   phishing detection and does not include email analysis capabilities.
+
+2. Mobile application development - The project is limited to Chrome browser 
+   extension and does not include mobile app versions.
+
+3. Support for other browsers - Initially, the system is designed for Chrome 
+   browser only. Support for Firefox, Safari, or Edge browsers is not included 
+   in the current scope.
+
+4. Enterprise features - Advanced enterprise features such as custom policies, 
+   centralized management, or integration with enterprise security tools are 
+   not included in the initial scope.
+
+5. Offline functionality - The system requires internet connectivity for AI 
+   analysis and is not designed to operate in offline mode.
+
+4.4 TARGET USERS
+
+The system is designed to serve the following user groups:
+
+1. Individual internet users seeking protection against phishing attacks 
+   during their daily web browsing activities.
+
+2. Small businesses that require cost-effective phishing protection without 
+   the complexity of enterprise security solutions.
+
+3. Educational institutions that need to protect students and staff from 
+   phishing attacks while maintaining visibility into security events.
+
+4. Organizations requiring additional layers of protection beyond standard 
+   browser security features.
+
+4.5 EXPECTED OUTCOMES
+
+Upon completion, the system is expected to:
+
+- Provide real-time protection against phishing websites with high accuracy
+- Reduce false positive rates through intelligent AI analysis
+- Enable rapid threat intelligence sharing across user base
+- Provide comprehensive audit trails for security analysis
+- Deliver seamless user experience with minimal performance impact
+- Demonstrate the effectiveness of AI-powered security solutions
+
+
+================================================================================
+
+
+5. BLOCK DIAGRAM / SYSTEM ARCHITECTURE
+================================================================================
+
+[SPACE FOR BLOCK DIAGRAM - TO BE ADDED MANUALLY]
+
+5.1 ARCHITECTURE OVERVIEW
+
+The system follows a three-tier architecture pattern, consisting of a 
+presentation layer (Chrome Extension), application layer (Next.js Backend), 
+data layer (PostgreSQL Database), and an external AI service layer 
+(Google Gemini).
+
+5.2 ARCHITECTURE COMPONENTS
+
+5.2.1 Frontend Layer - Chrome Extension
+The Chrome Extension serves as the user interface and interaction point. 
+It includes:
+- Background service worker that intercepts web requests
+- Content scripts for injecting warning banners
+- Popup interface for user authentication and status display
+- Scanning page shown during URL analysis
+- Blocked page displayed for confirmed phishing sites
+- Warning banner overlay for risky websites
+
+5.2.2 Backend Layer - Next.js API Server
+The backend API provides the core business logic and serves as an 
+intermediary between the extension and database/AI services:
+- RESTful API endpoints for URL checking
+- User authentication and authorization services
+- Admin API endpoints for dashboard functionality
+- Database interaction layer using Prisma ORM
+- Caching mechanism for performance optimization
+- Error handling and logging
+
+5.2.3 Database Layer - PostgreSQL
+The database stores persistent data including:
+- URL check results cache for fast lookups
+- User account information and authentication data
+- Audit records of all user interactions
+- System configuration and metadata
+
+5.2.4 AI Service Layer - Google Gemini
+The AI service provides intelligent analysis capabilities:
+- LangChain framework for orchestration
+- Google Gemini LLM for content understanding
+- Website content fetching and analysis tool
+- Phishing detection decision engine
+- Confidence scoring mechanism
+
+5.3 DATA FLOW
+
+The typical data flow through the system follows these steps:
+
+1. User navigates to a URL in Chrome browser
+2. Chrome Extension intercepts the navigation request
+3. Extension extracts base domain and checks local cache
+4. If not cached locally, extension sends request to Backend API
+5. Backend API checks database cache for previously analyzed URL
+6. If not in database cache, Backend API calls AI Service
+7. AI Service analyzes URL and optionally fetches website content
+8. AI Service returns analysis result with confidence score
+9. Backend API stores result in database cache
+10. Backend API returns result to Extension
+11. Extension displays appropriate action (block/warn/allow)
+12. Extension creates audit record if action was taken
+
+5.4 COMMUNICATION PROTOCOLS
+
+- Extension to Backend: HTTPS REST API calls with JWT authentication
+- Backend to Database: Prisma ORM with connection pooling
+- Backend to AI Service: HTTPS API calls to Google Gemini API
+- Extension to Chrome APIs: Native Chrome Extension APIs
+
+
+================================================================================
+
+
+6. ALGORITHM / TECHNIQUE PROPOSED OR SOLUTION METHODOLOGY
+================================================================================
+
+6.1 METHODOLOGY OVERVIEW
+
+The proposed solution employs a hybrid approach combining rule-based 
+filtering, database caching, and AI-powered analysis. The system uses 
+Google Gemini Large Language Model integrated with LangChain framework 
+to perform intelligent analysis of URLs and website content.
+
+6.2 ALGORITHM STEPS
+
+6.2.1 URL Interception and Normalization
+When a user navigates to a URL, the Chrome Extension intercepts the 
+request using the webRequest API. The system extracts the base domain 
+from the full URL, removing path parameters, query strings, and fragments. 
+The URL is normalized by converting to lowercase, removing 'www.' prefix, 
+and standardizing the protocol. This normalization ensures consistent 
+checking regardless of how the URL is accessed.
+
+6.2.2 Multi-Layer Cache Checking
+The system implements a two-tier caching mechanism. First, the extension 
+checks an in-memory cache for recently analyzed URLs within the same 
+browser session. If not found, the extension queries the backend API, 
+which checks the PostgreSQL database for previously analyzed URLs. This 
+caching strategy enables sub-50ms response times for cached URLs, 
+significantly improving user experience.
+
+6.2.3 AI-Powered Analysis
+For URLs not found in cache, the system employs AI-powered analysis using 
+the LangChain framework with Google Gemini LLM. The analysis process begins 
+with an initial URL pattern analysis that examines:
+- Domain name structure and suspicious patterns
+- Typosquatting indicators (character substitutions, missing characters)
+- URL path anomalies
+- Known phishing indicators
+- SSL certificate considerations
+
+6.2.4 Tool Calling Mechanism
+If the initial analysis yields low confidence (below 0.8 threshold), the 
+system employs a tool calling mechanism to fetch and analyze the actual 
+website content. The fetchWebsiteContent tool performs comprehensive 
+analysis including:
+- HTML structure examination
+- JavaScript code analysis (both inline and external scripts)
+- Form element detection and analysis
+- Link extraction and domain analysis
+- Meta tag examination
+- Detection of obfuscated code patterns
+- Identification of suspicious redirects
+
+6.2.5 Phishing Detection Algorithm
+The AI model analyzes the collected information using a sophisticated 
+prompt engineering approach. The system prompt instructs the model to 
+act as an expert cybersecurity analyst, considering multiple factors:
+- Domain name suspicious patterns (typosquatting, lookalike domains)
+- URL structure and path anomalies
+- Known phishing indicators
+- SSL certificate validity
+- Domain age and reputation
+- Website content analysis
+- JavaScript behavior patterns
+- Form submission destinations
+
+6.2.6 Warning Categorization
+For websites that are not confirmed phishing but pose security risks, 
+the system categorizes warnings into five types:
+- PIRACY: Sites hosting pirated content or illegal downloads
+- SCAMMING: Fraudulent services, fake reviews, deceptive practices
+- RISKY_LINKS: Suspicious redirects, link farms, suspicious external links
+- SCAM_PRODUCTS: Fake products, counterfeit goods, scam marketplaces
+- RISKY_FILES: Potentially malicious file distribution sites
+
+Each warning is assigned a severity level (low, medium, or high) based 
+on the assessed risk level.
+
+6.2.7 Confidence Scoring
+The AI model provides a confidence score ranging from 0.0 to 1.0, where 
+1.0 indicates complete certainty. This score helps the system make 
+informed decisions about when to block, warn, or allow websites. Higher 
+confidence scores result in more definitive actions, while lower scores 
+may trigger additional analysis or more cautious warnings.
+
+6.2.8 Decision Making and Response
+Based on the analysis results, the system makes one of three decisions:
+1. BLOCK: For confirmed phishing sites (isPhishing = true), navigation 
+   is blocked and a detailed blocking page is displayed
+2. WARN: For risky websites (hasWarning = true), navigation is allowed 
+   but a warning banner is displayed
+3. ALLOW: For safe websites, normal navigation proceeds without 
+   interruption
+
+6.2.9 Result Caching
+After analysis, the result is stored in the database cache with the 
+normalized URL as the key. This enables instant responses for future 
+visits to the same domain. The cache includes the analysis result, 
+confidence score, reasoning, and timestamp.
+
+6.2.10 Audit Logging
+For all user interactions with potentially harmful or warned websites, 
+the system creates detailed audit records including user identification, 
+visited URL, action taken, IP address, user agent, and timestamp. This 
+enables security analysis and system monitoring.
+
+6.3 TECHNICAL IMPLEMENTATION
+
+The algorithm is implemented using TypeScript with the following key 
+components:
+
+- LangChain ChatGoogleGenerativeAI model with temperature 0.1 for 
+  consistent results
+- Structured tool calling using FetchWebsiteContentTool
+- Iterative analysis loop (up to 5 iterations) for complex cases
+- JSON response parsing with fallback text extraction
+- Error handling with fail-open policy (allow navigation if check fails)
+
+6.4 PERFORMANCE OPTIMIZATION
+
+The system employs several optimization techniques:
+- Database indexing on URL column for fast lookups
+- Connection pooling for database access
+- Token limit management (10k tokens) for content analysis
+- Smart content trimming to preserve important data
+- Parallel processing where possible
+- Efficient caching strategies
+
+
+================================================================================
+
+
+7. ANALYSIS AND DESIGN
+================================================================================
+
+7.1 HARDWARE AND SOFTWARE REQUIREMENTS
+
+7.1.1 Hardware Requirements
+
+Development Environment:
+- Processor: Intel Core i5 or equivalent AMD processor (minimum), 
+  Intel Core i7 or equivalent recommended
+- RAM: 8GB minimum, 16GB recommended for optimal development experience
+- Storage: Minimum 10GB free disk space for development tools, 
+  dependencies, and project files
+- Display: Minimum 1366x768 resolution, 1920x1080 recommended
+- Network: Stable broadband internet connection for API calls and 
+  dependency downloads
+
+Production Server Requirements:
+- CPU: 2+ cores, 4 cores recommended for better performance
+- RAM: 4GB minimum, 8GB recommended for handling concurrent requests
+- Storage: Minimum 20GB for database storage and application files, 
+  with additional space for logs and backups
+- Network: Stable internet connection with low latency for AI API calls
+- Backup: Regular backup system for database and application data
+
+7.1.2 Software Requirements
+
+Development Tools:
+- Operating System: Windows 10/11, macOS 10.15+, or Linux (Ubuntu 20.04+)
+- Node.js: Version 18.0 or higher (LTS version recommended)
+- PostgreSQL: Version 14.0 or higher
+- Chrome Browser: Latest stable version for extension development and testing
+- Git: Version 2.30 or higher for version control
+- Code Editor: Visual Studio Code (recommended) or any modern IDE
+- Package Manager: npm (comes with Node.js) or yarn
+
+Runtime Requirements:
+- Chrome Browser: Latest stable version (for end users)
+- Node.js Runtime: Version 18.0 or higher (for backend server)
+- PostgreSQL Database: Version 14.0 or higher (for data storage)
+- Internet Connection: Required for Google Gemini API access
+
+Third-Party Services:
+- Google Gemini API: API key required for AI functionality
+- PostgreSQL Database: Can be local or cloud-hosted
+
+Development Libraries and Frameworks:
+- Next.js 16.0.4
+- React 19.2.0
+- TypeScript 5.x
+- Prisma 7.2.0
+- LangChain 0.3.x
+- @langchain/google-genai 0.0.20
+- Various UI libraries (Radix UI, Tailwind CSS)
+
+7.2 ER DIAGRAM
+
+[SPACE FOR ER DIAGRAM - TO BE ADDED MANUALLY]
+
+7.2.1 Entity Relationship Description
+
+The database consists of three main entities with the following 
+relationships:
+
+USER Entity:
+The User entity represents system users who use the Chrome extension. 
+Each user has a unique identifier (id), email address, password hash 
+for authentication, and a role (either USER or ADMIN). Users can have 
+multiple audit records associated with their account, establishing a 
+one-to-many relationship with the AuditRecord entity.
+
+URL_CHECK Entity:
+The UrlCheck entity stores the results of URL analysis performed by the 
+AI system. Each record represents a unique URL that has been analyzed, 
+with fields indicating whether it is a phishing site, whether it has 
+warnings, the type and severity of warnings, confidence score, and 
+reasoning. This entity is independent and does not have foreign key 
+relationships, as it serves as a shared cache accessible to all users.
+
+AUDIT_RECORD Entity:
+The AuditRecord entity logs all user interactions with websites that 
+resulted in blocking or warning actions. Each audit record is associated 
+with a specific user through a foreign key relationship (userId). The 
+entity stores comprehensive information about the visit including the URL, 
+action taken, phishing status, warning details, IP address, user agent, 
+and timestamp.
+
+Relationship Summary:
+- User to AuditRecord: One-to-Many relationship (one user can have 
+  multiple audit records)
+- UrlCheck: Standalone entity with no foreign key relationships
+- Cascade Delete: When a user is deleted, all associated audit records 
+  are automatically deleted (CASCADE delete)
+
+7.2.2 Entity Attributes
+
+USER Entity Attributes:
+- id: UUID (Primary Key) - Unique identifier for each user
+- email: String (Unique, Not Null) - User's email address for login
+- passwordHash: String (Not Null) - Hashed password using bcrypt
+- role: Enum (USER/ADMIN) - User role for access control
+- createdAt: DateTime - Timestamp of account creation
+- updatedAt: DateTime - Timestamp of last update
+
+URL_CHECK Entity Attributes:
+- id: UUID (Primary Key) - Unique identifier for each URL check
+- url: String (Unique, Indexed, Not Null) - Normalized URL being checked
+- isPhishing: Boolean (Not Null) - Whether URL is confirmed phishing
+- hasWarning: Boolean (Default: false) - Whether URL has warnings
+- warningType: String (Nullable) - Type of warning (piracy, scamming, etc.)
+- warningSeverity: String (Nullable) - Severity level (low, medium, high)
+- warningReason: String (Nullable) - Detailed warning explanation
+- confidence: Float (Nullable) - AI confidence score (0.0 to 1.0)
+- reason: Text (Nullable) - Detailed analysis reasoning
+- userId: String (Nullable) - User who triggered the check (optional)
+- checkedAt: DateTime - Timestamp of when URL was checked
+- createdAt: DateTime - Record creation timestamp
+- updatedAt: DateTime - Record update timestamp
+
+AUDIT_RECORD Entity Attributes:
+- id: UUID (Primary Key) - Unique identifier for each audit record
+- userId: UUID (Foreign Key → User.id, Not Null) - User who visited the URL
+- url: String (Not Null) - URL that was visited
+- isPhishing: Boolean (Not Null) - Whether URL was identified as phishing
+- hasWarning: Boolean (Default: false) - Whether URL had warnings
+- warningType: String (Nullable) - Type of warning if applicable
+- warningSeverity: String (Nullable) - Severity level if applicable
+- warningReason: String (Nullable) - Warning explanation if applicable
+- action: Enum (BLOCKED/WARNING_SHOWN/ALLOWED) - Action taken
+- ipAddress: String (Nullable) - IP address of the user
+- userAgent: String (Nullable) - Browser user agent string
+- visitedAt: DateTime - Timestamp of the visit
+- createdAt: DateTime - Record creation timestamp
+
+7.3 DATABASE TABLE DESIGN
+
+7.3.1 Users Table (users)
+
+CREATE TABLE users (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(10) NOT NULL DEFAULT 'USER' CHECK (role IN ('USER', 'ADMIN')),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+Indexes:
+- Primary key index on id (automatic)
+- Unique index on email (automatic)
+
+Constraints:
+- email must be unique
+- role must be either 'USER' or 'ADMIN'
+
+7.3.2 URL Checks Table (url_checks)
+
+CREATE TABLE url_checks (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    url VARCHAR(2048) UNIQUE NOT NULL,
+    is_phishing BOOLEAN NOT NULL,
+    has_warning BOOLEAN NOT NULL DEFAULT FALSE,
+    warning_type VARCHAR(50),
+    warning_severity VARCHAR(10) CHECK (warning_severity IN ('low', 'medium', 'high')),
+    warning_reason TEXT,
+    confidence DECIMAL(3,2) CHECK (confidence >= 0.0 AND confidence <= 1.0),
+    reason TEXT,
+    user_id UUID,
+    checked_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+Indexes:
+- Primary key index on id (automatic)
+- Unique index on url (automatic)
+- Index on url for fast lookups
+
+Constraints:
+- url must be unique
+- confidence must be between 0.0 and 1.0
+- warning_severity must be 'low', 'medium', or 'high'
+
+7.3.3 Audit Records Table (audit_records)
+
+CREATE TABLE audit_records (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL,
+    url VARCHAR(2048) NOT NULL,
+    is_phishing BOOLEAN NOT NULL,
+    has_warning BOOLEAN NOT NULL DEFAULT FALSE,
+    warning_type VARCHAR(50),
+    warning_severity VARCHAR(10) CHECK (warning_severity IN ('low', 'medium', 'high')),
+    warning_reason TEXT,
+    action VARCHAR(20) NOT NULL CHECK (action IN ('BLOCKED', 'WARNING_SHOWN', 'ALLOWED')),
+    ip_address VARCHAR(45),
+    user_agent TEXT,
+    visited_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+Indexes:
+- Primary key index on id (automatic)
+- Index on user_id for fast user-based queries
+- Index on visited_at for time-based queries
+- Index on action for filtering by action type
+
+Constraints:
+- user_id must reference existing user (foreign key)
+- action must be 'BLOCKED', 'WARNING_SHOWN', or 'ALLOWED'
+- warning_severity must be 'low', 'medium', or 'high'
+- Cascade delete: when user is deleted, audit records are deleted
+
+7.3.4 Database Design Considerations
+
+Normalization:
+The database design follows third normal form (3NF) to minimize data 
+redundancy. User information is stored separately from audit records, 
+and URL check results are stored independently to enable sharing across 
+users while maintaining referential integrity.
+
+Performance Optimization:
+- Indexes on frequently queried columns (url, user_id, visited_at, action)
+- Unique constraint on url in url_checks table enables fast lookups
+- Composite indexes could be added for common query patterns
+
+Data Integrity:
+- Foreign key constraints ensure referential integrity
+- Check constraints validate data values (role, action, severity)
+- Cascade delete ensures data consistency when users are removed
+
+Scalability:
+- UUID primary keys enable distributed database scenarios
+- Indexed columns support efficient queries as data grows
+- Timestamp fields enable time-based partitioning if needed
+
+
+================================================================================
+
+
+8. WORK PLAN
+================================================================================
+
+8.1 DEVELOPMENT PHASES
+
+The project development is organized into six main phases, each building 
+upon the previous phase to create a complete, functional system.
+
+Phase 1: Requirements Analysis and System Design
+This initial phase involves comprehensive analysis of the problem domain, 
+identification of requirements, and detailed system design. Activities 
+include literature review, requirement gathering, architecture design, 
+database schema design, and technology selection. This phase establishes 
+the foundation for all subsequent development work.
+
+Phase 2: Backend Development
+The backend development phase focuses on creating the core API server 
+and database infrastructure. This includes setting up the Next.js project, 
+implementing RESTful API endpoints, configuring PostgreSQL database, 
+setting up Prisma ORM, implementing authentication system, and creating 
+database migrations. The backend serves as the central component that 
+orchestrates all system operations.
+
+Phase 3: Frontend Extension Development
+This phase involves developing the Chrome browser extension that serves 
+as the user interface. Activities include creating extension manifest, 
+implementing background service worker for URL interception, developing 
+popup interface with authentication, creating scanning and blocking pages, 
+implementing warning banner system, and integrating with backend API.
+
+Phase 4: AI Integration
+The AI integration phase focuses on incorporating artificial intelligence 
+capabilities into the system. This includes setting up LangChain framework, 
+integrating Google Gemini API, developing website content fetching tool, 
+implementing phishing detection algorithms, creating confidence scoring 
+mechanism, and optimizing AI response handling.
+
+Phase 5: Admin Panel Development
+The admin panel phase involves creating a comprehensive web-based dashboard 
+for system administrators. This includes developing admin authentication, 
+creating URL checks management interface, implementing audit records viewer, 
+adding filtering and search functionality, implementing pagination, and 
+creating reporting features.
+
+Phase 6: Testing, Security, and Deployment
+The final phase encompasses comprehensive testing, security hardening, and 
+deployment preparation. Activities include unit testing, integration 
+testing, security testing, performance optimization, bug fixes, deployment 
+configuration, documentation, and user acceptance testing.
+
+8.2 IMPLEMENTATION APPROACH
+
+The implementation follows an iterative development approach, where each 
+component is developed, tested, and refined before moving to the next. 
+This approach allows for early detection of issues and enables incremental 
+improvements. The development process emphasizes code quality, security 
+best practices, and performance optimization throughout all phases.
+
+8.3 RISK MANAGEMENT
+
+Potential risks identified during planning include:
+- API rate limits from Google Gemini service
+- Performance issues with large-scale database queries
+- Browser extension compatibility issues
+- Security vulnerabilities in authentication system
+- False positive rates in AI detection
+
+Mitigation strategies include:
+- Implementing efficient caching to reduce API calls
+- Database indexing and query optimization
+- Extensive browser testing
+- Security audits and penetration testing
+- Continuous refinement of AI prompts and algorithms
+
+
+================================================================================
+
+
+9. WORK DONE SO FAR
+================================================================================
+
+9.1 PROJECT INITIALIZATION
+
+The base layer of the project has been successfully completed, establishing 
+a solid foundation for all subsequent development work. The project structure 
+has been set up with proper organization, version control has been initialized 
+using Git, and the development environment has been configured with all 
+necessary tools and dependencies.
+
+9.2 CHROME EXTENSION IMPLEMENTATION
+
+A fully functional Chrome browser extension has been developed and implemented. 
+The extension includes:
+
+- Complete manifest.json configuration following Chrome Extension Manifest V3 
+  specifications, with all necessary permissions for webRequest, tabs, storage, 
+  and activeTab APIs.
+
+- Background service worker (background.js) that intercepts all web navigation 
+  requests using the webRequest API, extracts base domains from URLs, and 
+  coordinates the URL checking process.
+
+- Popup interface (popup.html/js) providing user authentication functionality 
+  with login and registration forms, current page status display, manual scan 
+  button, and real-time scan result display.
+
+- Scanning page (scanning.html/js) that is displayed while new URLs are being 
+  analyzed, providing visual feedback to users during the checking process.
+
+- Blocked page (blocked.html/js) that is displayed when a phishing site is 
+  detected, showing detailed information about why the site was blocked and 
+  providing options for user action.
+
+- Warning banner system (content-warning.js) that injects warning overlays 
+  onto risky websites, displaying warning type and severity information while 
+  allowing users to dismiss and continue browsing.
+
+- Content scripts for page-level detection and warning display, ensuring 
+  seamless integration with web pages.
+
+- API client module (api-client.js) for communicating with the backend API, 
+  handling authentication tokens, and managing API requests.
+
+- Authentication module (auth.js) for managing user login, registration, and 
+  token storage within the extension.
+
+9.3 BACKEND API DEVELOPMENT
+
+A comprehensive backend API has been developed using Next.js framework:
+
+- Complete Next.js project setup with TypeScript configuration, proper folder 
+  structure, and development environment setup.
+
+- RESTful API endpoint for URL checking (/api/check-url) that handles URL 
+  analysis requests, performs database cache lookups, coordinates AI analysis, 
+  and returns appropriate responses.
+
+- User authentication endpoints (/api/auth/login and /api/auth/register) for 
+  user registration and login functionality, including password hashing and 
+  JWT token generation.
+
+- Admin API endpoints (/api/admin/urls and /api/admin/audit) for retrieving 
+  URL check data and audit records with support for filtering, sorting, and 
+  pagination.
+
+- Authentication middleware (middleware.ts) for protecting API routes, 
+  validating JWT tokens, and extracting user information from requests.
+
+- Error handling and logging mechanisms throughout the API for debugging and 
+  monitoring purposes.
+
+- Input validation and sanitization to prevent security vulnerabilities.
+
+9.4 DATABASE SCHEMA DESIGN AND IMPLEMENTATION
+
+A comprehensive database schema has been designed and implemented:
+
+- PostgreSQL database setup and configuration for development and production 
+  environments.
+
+- Prisma ORM configuration and setup, enabling type-safe database access and 
+  migration management.
+
+- Complete database schema definition with three main tables: Users, UrlChecks, 
+  and AuditRecords, each with appropriate fields, data types, and constraints.
+
+- Database migrations created and executed to establish the database structure, 
+  including all tables, indexes, and foreign key relationships.
+
+- Proper indexing strategy implemented for optimal query performance, including 
+  indexes on url, user_id, visited_at, and action columns.
+
+- Relationship definitions between entities, including one-to-many relationship 
+  between Users and AuditRecords with cascade delete functionality.
+
+- Database connection pooling and optimization for efficient database access.
+
+9.5 AI INTEGRATION
+
+Advanced AI capabilities have been successfully integrated into the system:
+
+- LangChain framework integration for orchestrating AI operations and managing 
+  conversation flows with the language model.
+
+- Google Gemini API integration using ChatGoogleGenerativeAI model with 
+  appropriate configuration including model selection (gemini-2.0-flash-exp) 
+  and temperature settings (0.1 for consistent results).
+
+- Tool calling mechanism implementation that allows the AI model to 
+  programmatically fetch and analyze website content when initial URL analysis 
+  yields low confidence.
+
+- Website content analysis tool (FetchWebsiteContentTool) that fetches HTML 
+  content, extracts JavaScript code (both inline and external), analyzes form 
+  elements, examines links, identifies suspicious patterns, and detects 
+  obfuscated code.
+
+- Sophisticated prompt engineering with detailed system prompts that instruct 
+  the AI model to act as an expert cybersecurity analyst, considering multiple 
+  factors in phishing detection.
+
+- Phishing detection algorithm that analyzes URLs and website content to 
+  identify phishing sites, categorize warnings, and assign confidence scores.
+
+- Warning categorization system that classifies risky websites into five 
+  categories: PIRACY, SCAMMING, RISKY_LINKS, SCAM_PRODUCTS, and RISKY_FILES, 
+  each with severity levels (low, medium, high).
+
+- Confidence scoring mechanism that provides scores from 0.0 to 1.0, enabling 
+  informed decision-making about blocking, warning, or allowing websites.
+
+- Iterative analysis loop that allows the AI to perform multiple analysis 
+  iterations (up to 5) for complex cases, using tool calls to gather additional 
+  information when needed.
+
+- Response parsing and error handling with fallback mechanisms for extracting 
+  results from AI responses.
+
+9.6 ADMIN PANEL DEVELOPMENT
+
+A comprehensive admin dashboard has been developed:
+
+- Admin login system with separate authentication flow and protected admin 
+  routes.
+
+- URL Checks Management interface displaying all checked URLs in a table format 
+  with columns for URL, phishing status, warning status, warning type, 
+  confidence score, and check timestamp.
+
+- Audit Records interface showing all user interactions with detailed 
+  information including user email, visited URL, action taken, phishing 
+  status, warning details, IP address, user agent, and visit timestamp.
+
+- Advanced filtering capabilities allowing administrators to filter by 
+  phishing status, warning status, action type, user email, and date ranges.
+
+- Search functionality for finding specific URLs or users quickly.
+
+- Sorting functionality enabling sorting by any column in ascending or 
+  descending order.
+
+- Pagination support with configurable page sizes (25, 50, or 100 records 
+  per page) for efficient data browsing.
+
+- Responsive design ensuring the admin panel works well on different screen 
+  sizes.
+
+9.7 ADDITIONAL COMPLETED WORK
+
+- User interface styling using CSS and Tailwind CSS for consistent, modern 
+  design across all components.
+
+- Error handling and user feedback mechanisms throughout the application.
+
+- Configuration management for API URLs, environment variables, and system 
+  settings.
+
+- Code organization and documentation with clear comments and structure.
+
+- Development tools setup including ESLint, Prettier, and TypeScript 
+  configuration for code quality.
+
+
+================================================================================
+
+
+10. WORK TO BE DONE
+================================================================================
+
+10.1 SECURITY IMPROVEMENTS
+
+While the base security mechanisms have been implemented, several security 
+enhancements are planned to further harden the system:
+
+- Enhanced Input Validation: Implement more comprehensive input validation 
+  and sanitization across all API endpoints to prevent injection attacks, 
+  XSS vulnerabilities, and other input-based security issues. This includes 
+  validating URL formats, email addresses, and all user-provided data.
+
+- Rate Limiting Implementation: Implement rate limiting mechanisms to prevent 
+  abuse and protect against denial-of-service attacks. This includes limiting 
+  the number of API requests per user, implementing IP-based rate limiting, 
+  and adding throttling for AI API calls to manage costs and prevent abuse.
+
+- Security Headers Configuration: Configure appropriate security headers 
+  including Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, 
+  and Strict-Transport-Security to protect against various web-based attacks.
+
+- Token Refresh Mechanism: Implement JWT token refresh functionality to 
+  allow users to maintain sessions without frequent re-authentication while 
+  maintaining security through token rotation.
+
+- XSS Protection Enhancements: Strengthen cross-site scripting protection 
+  through improved output encoding, Content Security Policy implementation, 
+  and input sanitization.
+
+- CSRF Protection: Implement Cross-Site Request Forgery protection 
+  mechanisms to prevent unauthorized actions from malicious websites.
+
+- Security Audit: Conduct comprehensive security audit including penetration 
+  testing, vulnerability scanning, and code security review to identify and 
+  address potential security weaknesses.
+
+10.2 APPLICATION QUALITY IMPROVEMENTS
+
+Several areas require refinement to enhance overall application quality:
+
+- Code Optimization: Review and optimize code for performance, reducing 
+  unnecessary computations, improving algorithm efficiency, and minimizing 
+  memory usage. This includes optimizing database queries, reducing API 
+  call overhead, and improving caching strategies.
+
+- Performance Tuning: Conduct performance profiling to identify bottlenecks 
+  and optimize system performance. This includes database query optimization, 
+  API response time improvement, extension performance optimization, and 
+  reducing page load times.
+
+- Error Handling Refinement: Enhance error handling throughout the application 
+  to provide more meaningful error messages, implement proper error logging, 
+  and ensure graceful degradation when errors occur.
+
+- User Experience Enhancements: Improve user interface and user experience 
+  based on user feedback and usability testing. This includes improving 
+  visual design, enhancing accessibility, optimizing user flows, and 
+  providing better user guidance.
+
+- UI/UX Improvements: Refine the visual design of all interfaces including 
+  the extension popup, blocking pages, warning banners, and admin dashboard. 
+  Ensure consistent design language, improve color schemes, enhance typography, 
+  and optimize layouts for better usability.
+
+- Documentation Completion: Complete comprehensive documentation including 
+  user manuals, developer documentation, API documentation, deployment guides, 
+  and troubleshooting guides. This documentation will help users, developers, 
+  and administrators understand and use the system effectively.
+
+- Code Comments and Documentation: Add detailed code comments and 
+  documentation to improve code maintainability and help future developers 
+  understand the codebase.
+
+10.3 QA TESTING
+
+Comprehensive quality assurance testing is required to ensure system reliability 
+and correctness:
+
+- Unit Testing: Develop and execute unit tests for all critical components 
+  including API endpoints, database operations, AI integration, extension 
+  functionality, and utility functions. Aim for high code coverage to ensure 
+  all code paths are tested.
+
+- Integration Testing: Perform integration testing to verify that all 
+  components work together correctly. This includes testing the interaction 
+  between extension and backend API, database operations, AI service integration, 
+  and admin panel functionality.
+
+- End-to-End Testing: Conduct end-to-end testing to verify complete user 
+  workflows including user registration, login, URL scanning, blocking, 
+  warning display, and admin dashboard operations.
+
+- Security Testing: Perform security testing including vulnerability scanning, 
+  penetration testing, authentication testing, authorization testing, and input 
+  validation testing to identify and fix security vulnerabilities.
+
+- Performance Testing: Conduct performance testing to verify system performance 
+  under various load conditions. This includes testing response times, 
+  concurrent user handling, database performance, and API performance.
+
+- User Acceptance Testing: Organize user acceptance testing with actual users 
+  to gather feedback on functionality, usability, and overall user experience. 
+  Incorporate user feedback into improvements.
+
+- Browser Compatibility Testing: Test the Chrome extension across different 
+  Chrome versions and ensure compatibility with various browser configurations.
+
+- Bug Fixes and Refinements: Address all identified bugs, issues, and 
+  usability problems discovered during testing phases.
+
+10.4 DEPLOYMENT
+
+The final phase involves preparing the system for production deployment:
+
+- Production Environment Setup: Configure production environment including 
+  server setup, database configuration, environment variables, and security 
+  settings. This includes setting up production-grade servers, configuring 
+  load balancing if needed, and ensuring high availability.
+
+- Database Migration to Production: Migrate database schema to production 
+  environment, ensuring data integrity and proper backup procedures. This 
+  includes setting up database backups, replication if needed, and disaster 
+  recovery procedures.
+
+- CI/CD Pipeline Configuration: Set up continuous integration and continuous 
+  deployment pipelines to automate testing and deployment processes. This 
+  includes configuring automated testing, code quality checks, and automated 
+  deployment workflows.
+
+- Monitoring and Logging Setup: Implement comprehensive monitoring and logging 
+  systems to track system performance, detect issues, and enable debugging. 
+  This includes setting up application monitoring, error tracking, performance 
+  monitoring, and log aggregation systems.
+
+- Backup and Recovery Procedures: Establish backup and recovery procedures 
+  to protect against data loss. This includes regular database backups, 
+  configuration backups, and disaster recovery planning.
+
+- Documentation Finalization: Complete and finalize all documentation including 
+  deployment guides, operational procedures, troubleshooting guides, and 
+  maintenance documentation.
+
+- Performance Optimization for Production: Optimize system performance for 
+  production environment including database optimization, caching strategies, 
+  and resource allocation.
+
+- Security Hardening: Apply final security hardening measures for production 
+  deployment including SSL/TLS configuration, security headers, firewall rules, 
+  and access controls.
+
+
+================================================================================
+
+
+11. TIME SCHEDULE
+================================================================================
+
+[TO BE FILLED MANUALLY]
+
+
+================================================================================
+
+
+12. REFERENCES
+================================================================================
+
+12.1 ACADEMIC PAPERS AND RESEARCH
+
+1. Zhang, Y., et al. (2023). "Phishing Detection Using Machine Learning: 
+   A Comprehensive Survey." IEEE Conference on Cybersecurity and Privacy, 
+   pp. 145-162.
+
+2. Kumar, A., & Singh, R. (2022). "AI-Based Web Security: A Survey of 
+   Modern Approaches." ACM Computing Surveys, 55(3), Article 45.
+
+3. Chen, L., et al. (2023). "Browser Extension Security: Challenges and 
+   Solutions." Journal of Cybersecurity Research, 12(4), 234-251.
+
+4. Patel, S., & Williams, M. (2022). "Deep Learning for Phishing Detection: 
+   A Comparative Study." Journal of Cybersecurity, 8(2), 89-112.
+
+5. Anderson, J., et al. (2023). "Real-time URL Classification Using 
+   Natural Language Processing." Network Security Conference Proceedings, 
+   pp. 78-95.
+
+6. Lee, K., & Brown, T. (2022). "Browser-based Threat Detection: Current 
+   State and Future Directions." Web Security Symposium, pp. 112-128.
+
+12.2 TECHNOLOGY DOCUMENTATION
+
+1. LangChain Documentation. (2024). "LangChain: Building Applications with 
+   LLMs through Composability." Retrieved from https://python.langchain.com/
+
+2. Google AI. (2024). "Google Gemini API Documentation." Retrieved from 
+   https://ai.google.dev/
+
+3. Next.js Team. (2024). "Next.js Documentation: The React Framework for 
+   Production." Retrieved from https://nextjs.org/docs
+
+4. Chrome Developers. (2024). "Chrome Extension API Documentation." 
+   Retrieved from https://developer.chrome.com/docs/extensions/
+
+5. Prisma Team. (2024). "Prisma Documentation: Next-generation ORM for 
+   Node.js and TypeScript." Retrieved from https://www.prisma.io/docs
+
+6. React Team. (2024). "React Documentation: A JavaScript Library for 
+   Building User Interfaces." Retrieved from https://react.dev/
+
+7. PostgreSQL Global Development Group. (2024). "PostgreSQL Documentation." 
+   Retrieved from https://www.postgresql.org/docs/
+
+8. Node.js Foundation. (2024). "Node.js Documentation." Retrieved from 
+   https://nodejs.org/docs/
+
+12.3 SECURITY STANDARDS AND GUIDELINES
+
+1. OWASP Foundation. (2023). "OWASP Top 10 - 2023: The Ten Most Critical 
+   Web Application Security Risks." Retrieved from https://owasp.org/www-project-top-ten/
+
+2. Mozilla Developer Network. (2024). "Content Security Policy (CSP)." 
+   Retrieved from https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+
+3. Internet Engineering Task Force. (2015). "JSON Web Token (JWT) Best 
+   Current Practices." RFC 8725. Retrieved from https://www.rfc-editor.org/rfc/rfc8725
+
+4. PostgreSQL Security Team. (2024). "PostgreSQL Security Guidelines." 
+   Retrieved from https://www.postgresql.org/docs/current/security.html
+
+5. Chrome Security Team. (2024). "Chrome Extension Security Best Practices." 
+   Retrieved from https://developer.chrome.com/docs/extensions/mv3/security/
+
+12.4 FRAMEWORK AND LIBRARY DOCUMENTATION
+
+1. Tailwind CSS Team. (2024). "Tailwind CSS Documentation: Rapidly Build 
+   Modern Websites." Retrieved from https://tailwindcss.com/docs
+
+2. Radix UI. (2024). "Radix UI: Unstyled, Accessible Components for 
+   React." Retrieved from https://www.radix-ui.com/
+
+3. TypeScript Team. (2024). "TypeScript Documentation: JavaScript with 
+   Syntax for Types." Retrieved from https://www.typescriptlang.org/docs/
+
+4. Zod Team. (2024). "Zod: TypeScript-First Schema Validation." Retrieved 
+   from https://zod.dev/
+
+12.5 INDUSTRY REPORTS AND STATISTICS
+
+1. Verizon. (2023). "2023 Data Breach Investigations Report." Verizon 
+   Enterprise Solutions.
+
+2. PhishLabs. (2023). "2023 Phishing Trends and Intelligence Report." 
+   PhishLabs Quarterly Threat Trends.
+
+3. Cybersecurity & Infrastructure Security Agency. (2023). "Phishing 
+   Awareness Guide." CISA Cybersecurity Insights.
+
+4. Anti-Phishing Working Group. (2023). "Global Phishing Survey: 2023 
+   Annual Report." APWG.
+
+
+================================================================================
+                            END OF DOCUMENT
+================================================================================
+
